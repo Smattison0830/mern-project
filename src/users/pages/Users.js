@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react';
+import UsersList from '../components/UsersList';
 
 export default function Users() {
-  return <h2>HELLO THIS IS THE USERS PAGE!</h2>;
+  return <UsersList />;
 }
