@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PlaceItem from './PlaceItem';
 import Card from '../../shared/components/UIElements/Card';
 import './PlaceList.css';
 
@@ -14,4 +15,20 @@ export default function PlaceList(props) {
       </div>
     );
   }
+
+  return (
+    <ul className="place-list">
+      {props.items.map(place => (
+        <PlaceItem
+          key={place.id}
+          id={place.id}
+          title={place.title}
+          description={place.description}
+          address={place.address}
+          creatorId={place.creator}
+          coordinates={place.location}
+        />
+      ))}
+    </ul>
+  );
 }
