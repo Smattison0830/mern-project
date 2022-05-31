@@ -1,14 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+
+import './Map.css';
 
 export default function Map(props) {
   const mapRef = useRef();
 
-  const map = new window.google.maps.Map(mapRef.current, {
-    center: props.center,
-    zoom: props.zoom,
-  });
+  const { center, zoom } = props;
 
-  new window.google.maps.Marker({ position: props.center, map: map });
+  useEffect(() => {
+    const map = new window.google.maps.Map(mapRef.current, {
+      center: center,
+      zoom: zoom,
+    });
+
+    new window.google.maps.Marker({ position: center, map: map });
+  }, [center, zoom]);
 
   return (
     <div
