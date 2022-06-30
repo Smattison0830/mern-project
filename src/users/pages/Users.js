@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import UsersList from '../components/UsersList';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
 export default function Users() {
-  const USERS = [
-    {
-      id: 'u1',
-      name: 'Spencer Mattison',
-      image:
-        'https://images.pexels.com/photos/839011/pexels-photo-839011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      places: 3,
-    },
-  ];
-  return <UsersList items={USERS} />;
+  return (
+    <React.Fragment>
+      <ErrorModal error={error} onClear={errorHandler} />
+      {isLoading && (
+        <div className="ceter">
+          <LoadingSpinner />
+        </div>
+      )}
+      <UsersList items={loaderUsers} />
+    </React.Fragment>
+  );
 }
